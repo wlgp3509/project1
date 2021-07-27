@@ -1,0 +1,19 @@
+main{
+    width: 900px;
+    margin: auto;
+    padding-top: 100px;
+
+    text-align:center;
+}
+h1{
+    padding-top: 25px;
+    font-family:serif;
+    color: white;
+}
+li{
+    float: right;
+    margin: 20px;
+}
+pre{
+    color:gray;
+}

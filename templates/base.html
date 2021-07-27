@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+
+    <title>I-Test의 게시판</title>
+</head>
+<body>
+<!-- navbar 추가 21.07.16 최졔 -->
+{% include "navbar.html" %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

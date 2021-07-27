@@ -1,0 +1,47 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'assets/css/service.css'%}">
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서비스 소개</title>
+</head>
+
+<body onload="alert('아직오픈되지 않은 페이지 입니다' )";>
+    <main>
+        <section id="first" class="main special">
+            <header class="major">
+                <h2>서비스 소개</h2>
+            </header>
+            <ul class="features">
+                <li>
+                    <span class="icon solid major style1 fa-code"></span>
+                    <h3>ADHD검사</h3>
+                    <p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+                </li>
+                <li>
+                    <span class="icon major style3 fa-copy"></span>
+                    <h3>다중심리검사</h3>
+                    <p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+                </li>
+                <li>
+                    <span class="icon major style5 fa-gem"></span>
+                    <h3>미술심리검사</h3>
+                    <p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+                </li>
+            </ul>
+            <footer class="major">
+                <ul class="actions special">
+                    <li><a href="{% url 'service:service' %}" class="button">Learn More</a></li>
+                </ul>
+            </footer>
+        </section>
+</main>
+</body>
+</html>
