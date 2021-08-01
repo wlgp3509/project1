@@ -120,7 +120,8 @@ def question_create(request):
             question.create_date = timezone.now()
             question.author = request.user
             question.save()
-            return redirect('app1:index')
+            context = {'form': form}
+            return redirect('app1:question_list')
     else:
         form = QuestionForm()
     context = {'form': form}
@@ -167,7 +168,7 @@ def question_delete(request, question_id):
         messages.error(request, '삭제 권한이 없습니다')
         return redirect('app1:detail', question_id=question.id)
     question.delete()
-    return redirect('app1:index')
+    return redirect('app1:question_list')
 
 # 21.07.23 답변 수정 함수---------------------------------------------
 # 문제: 1. answer_form에서 데이터 입력받으면 해당 내용을 저장하는 부분 구현

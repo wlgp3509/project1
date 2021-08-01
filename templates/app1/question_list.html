@@ -4,6 +4,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 
+
 <div class="container my-3">
     <!-- 페이징 기법 : 컴퓨터가 데이터를 저장하고 검색하는 메모리관리 기법
     paginator.count : 전체 게시물 개수를 가져옴
@@ -14,11 +15,11 @@
      -->
     <table class="table">
         <thead>
-            <tr class="text-center thead-dark">
-                <th>번호</th>
-                <th style="width:50%">제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
+            <tr class="thead-dark">
+                <th class="text-center" >번호</th>
+                <th class="text-center" style="width:50%">제목</th>
+                <th class="text-center" >작성자</th>
+                <th class="text-center" >작성일</th>
 
             </tr>
         </thead>
@@ -91,6 +92,6 @@
 
     </ul>
 
-    <a href="{% url 'app1:question_create' %}" class="btn btn-primary"> 질문 등록하기 </a>
+    <a href="{% url 'app1:question_create' %}" class="btn btn-primary"> 글 작성하기 </a>
 </div>
 {% endblock %}

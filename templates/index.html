@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
+
+{% block content %}
 <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 
 <!DOCTYPE HTML>
@@ -20,8 +23,8 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/logo.svg" alt="" /></span>
 						<h1>I-TEST</h1>
-						<p>프로젝트 진행중<br/>
-						최지혜 <a href="https://twitter.com/ajlkn">링크1</a> 과 진나니<a href="https://html5up.net">링크2</a>.</p>
+						<p>파이썬 웹개발 프로젝트<br/>
+						 진나니 & 최지혜</p>
 					</header>
 
 				<!-- Nav -->
@@ -57,7 +60,7 @@
 						<!-- First Section -->
 							<section id="first" class="main special">
 								<header class="major">
-									<h2>서비스 소개</h2>
+									<h2>SERVICE</h2>
 								</header>
 								<ul class="features">
 									<li>
@@ -181,3 +184,4 @@
 	{% endblock %}
 	</body>
 </html>
+{% endblock %}

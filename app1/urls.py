@@ -4,7 +4,7 @@ from . import views
 app_name = 'app1'
 
 urlpatterns =[
-    path('', views.index, name='index'),
+    path('', views.question_list, name='index'),
 
     # ---- 게시판(질문 리스트) 21.07.26(최졔)
     path('question/list/', views.question_list, name='question_list'),

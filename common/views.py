@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from common.forms import UserForm
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Create your views here.
 def signup(request):
@@ -13,7 +14,7 @@ def signup(request):
             # 회원가입 후 바로 로그인 되게 하는 기능
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('index')
+            return render(request, 'index.html')
 
     else:
         form = UserForm()
