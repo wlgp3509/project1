@@ -120,7 +120,6 @@ def question_create(request):
             question.create_date = timezone.now()
             question.author = request.user
             question.save()
-            context = {'form': form}
             return redirect('app1:question_list')
     else:
         form = QuestionForm()

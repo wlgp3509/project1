@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
 <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
-
 <!DOCTYPE HTML>
 <!-- 21.07.24 index 최졔	-->
 <html>
@@ -21,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<span class="logo"><img src="static/images/logo.svg" alt="" /></span>
 						<h1>I-TEST</h1>
 						<p>파이썬 웹개발 프로젝트<br/>
 						 진나니 & 최지혜</p>
@@ -53,7 +51,7 @@
 											<li><a href="generic.html" class="button">Learn More</a></li>
 										</ul>
 									</div>
-									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+									<span class="image"><img src="static/images/pic01.jpg" alt="" /></span>
 								</div>
 							</section>
 
@@ -131,7 +129,7 @@
 								</header>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">진행현황 확인</a></li>
+										<li><a href="generic.html" class="button primary">진행현황</a></li>
 										<li><a href="{% url 'app1:question_list' %}" class="button">게시판</a></li>
 									</ul>
 								</footer>

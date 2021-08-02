@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'app1.apps.App1Config',
     'service.apps.ServiceConfig',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
