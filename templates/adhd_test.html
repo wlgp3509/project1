@@ -1,4 +1,5 @@
 {% load static %}
+
 <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 <link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
 
@@ -28,7 +29,7 @@
 
 						<!-- Content -->
 							<section id="content" class="main">
-								<h3><a href="#">초등학생 adhd 검사</a> </h3>
+								<h3><a href="{% url 'service:adhd1' %}" >초등학생 adhd 검사</a> </h3>
 								<h3><a href="#">중고등학생용 adhd 검사</a></h3>
 								<h3><a href="#">성인용 adhd 검사</a></h3>
 
