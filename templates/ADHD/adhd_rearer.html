@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<!--	<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
+		<link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ADHD 검사 - 양육자 </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+	</head>
+	<body>
+	<div class="container">
+	<div class="header clearfix">
+		<nav>
+		<ul class="nav nav-pills pull-right"></ul>
+		</nav>
+	</div>
+	<script>
+		$(document).ready(function(){
+		  $('#test_form').submit(function(){
+			var input_names = []
+			var correctly_checked = true;
+			$('#test_form input:radio').each(function(){
+			  var input_name = $(this).prop('name');
+			  if(input_names.indexOf(input_name) < 0){
+				if(!$("input:radio[name="+input_name+"]").is(":checked")){
+				  correctly_checked = false;
+				  alert((parseInt(input_name.substr("question".length))+1)+"번 문항을 입력해주세요.");
+				  return false;
+				}
+				input_names.push(input_name);
+			  }
+			});
+			if(correctly_checked == false){
+			  return false;
+			}
+		  });
+		});
+		</script>
+	<div id="test_context">
+	<div class="container">
+	<span style="font-weight:bold;">ADHD 테스트 - 양육자</span>
+	<p>&lt;양육자용 ADHD 검사&gt;입니다. 지난 일주일 동안 내가 한 행동을 가장 잘 기술한 곳에 표시 하세요. 총 검사시간은 5분정도 소요됩니다.</p>
+		<div>1점: 전혀 그렇지 않다 <   2점: 가끔 그렇다 <   3점: 보통이다 <   4점: 자주 그렇다 <   5점: 항상 그렇다 <br><br><br> </div>
+	<div class="form-group">
+
+		<label>1. 일을 순서대로 진행하기 어렵다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="0">1점 </label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="3">4점</label></div> <br><br>
+
+		<label>2. 새로운 일을 시작하고 준비하기까지 많은 시간이 걸린다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="3">4점</label></div> <br><br>
+
+		<label>3. 동시에 여러 가지 일을 시작하지만 끝마치기 어렵다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="3">4점</label></div> <br><br>
+
+		<label>4. 책을 읽거나 대화하는 도중 쉽게 주의가 분산된다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="3">4점</label></div> <br><br>
+
+		<label> 5. 어떤 일에 과도하게 집중한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="3">4점</label></div> <br><br>
+
+		<label>6. 정밀한 일에 주의를 기울이지 못한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="3">4점</label></div> <br><br>
+
+		<label>7. 조심성이 없어 실수를 많이 한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="3">4점</label></div> <br><br>
+
+		<label>8. 다른 사람의 말을 귀 기울여 듣지 않는다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="3">4점</label></div> <br><br>
+
+		<label>9. 지속적인 정신력을 요하는 직업을 피하거나 싫어한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="3">4점</label></div> <br><br>
+
+		<label>10. 상황을 고려하지 않고 머리에 떠오르는 생각을 즉각적으로 말한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="3">4점</label></div> <br><br>
+
+		<label>11. 지루함을 견디지 못한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="3">4점</label></div> <br><br>
+
+		<label>12. 불필요하게 끝없이 걱정한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="3">4점</label></div> <br><br>
+
+		<label> 13. 위험을 고려하지 않고 행동한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="3">4점</label></div> <br><br>
+
+		<label>14. 질문이 끝나기도 전에 불쑥 대답해버린다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="3">4점</label></div> <br><br>
+
+		<label>15. 차례를 기다릴 때 초조하고 답답하다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="3">4점</label></div> <br><br>
+
+		<label>16. 술 담배 게임 쇼핑 일 음식 등에 깊이 빠져든다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="3">4점</label></div> <br><br>
+
+		<label>17. 가만히 있지 못하고 손발을 움직이거나 몸을 뒤튼다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="3">4점</label></div> <br><br>
+
+		<label>18. 말을 지나치게 많이 한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="3">4점</label></div> <br><br>
+
+		<label>19. 가끔 창조적이고 직관적이며 지적으로 우수해 보인다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question18" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question18" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question18" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question18" value="3">4점</label></div> <br><br>
+
+		<label>20. 가족 중 우울증 조울증 약물남용 충동조절장애가 있는 사람이 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question19" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question19" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question19" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question19" value="3">4점</label></div> <br><br>
+
+		<label>21. 돈을 충동적으로 쓴다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question20" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question20" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question20" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question20" value="3">4점</label></div> <br><br>
+
+		<label>22. 과속 음주운전 또는 과음을 자주 한다</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question21" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question21" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question21" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question21" value="3">4점</label></div> <br><br>
+
+
+
+		<br><br><br><br>
+		<textarea cols="60" rows="10"  placeholder="전문가한테 남기고 싶은 의견을 작성하세요."></textarea>
+
+	</label>
+		<input class="btn btn-primary btn-sm" type="submit" value="결과 제출하기">
+	</div>
+	</form>
+
+	</div>
+		<footer class="footer">
+			<p>&copy; 탐나는 친구들</p>
+		</footer>
+	</div>
+
+	</body>
+</html>
+{% endblock %}
