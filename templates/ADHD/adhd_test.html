@@ -1,11 +1,12 @@
+{% extends 'base.html' %}
 {% load static %}
-
+{% block content %}
 <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 <link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
 
 
 <!DOCTYPE HTML>
-<html>
+<html lang="ko">
 	<head>
 		<title>I-TEST의 ADHD 검사</title>
 		<meta charset="utf-8" />
@@ -32,6 +33,7 @@
 								<h2>자녀 ADHD 검사 시작하기</h2>
 								<h3><a href="{% url 'service:adhd_elementary' %}" >초등학생</a> </h3>
 								<h3><a href="{% url 'service:adhd_student' %}">중고등학생</a></h3>
+								<h3><a href="{% url 'service:TEST' %}">테스트</a></h3>
 
 								</section>
 
@@ -81,3 +83,4 @@
 	{% endblock %}
 	</body>
 </html>
+{% endblock %}

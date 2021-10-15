@@ -4,11 +4,11 @@
 	<!--	<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 		<link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
 -->
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 	<head>
+		<meta charset="UTF-8">
 		<title>ADHD 검사 - 중고등학생용 </title>
-		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 
@@ -32,7 +32,7 @@
 			  if(input_names.indexOf(input_name) < 0){
 				if(!$("input:radio[name="+input_name+"]").is(":checked")){
 				  correctly_checked = false;
-				  alert((parseInt(input_name.substr("question".length))+1)+"번 문항을 입력해주세요.");
+				  alert((parseInt(input_name.substr("question".length))+1)+"번 문항이 체크되지 않았습니다.");
 				  return false;
 				}
 				input_names.push(input_name);

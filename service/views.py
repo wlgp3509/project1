@@ -12,6 +12,10 @@ def adhd_student(request):
     return render(request, 'ADHD/adhd_student.html')
 def adhd_rearer(request):
     return render(request, 'ADHD/adhd_rearer.html')
+def TEST(request):
+    return render(request, 'ADHD/TEST.html')
+
+
 
 # 21.10.12 우울증 (청소년, 양육자) 서비스 추가
 def depression_test(request):
@@ -20,6 +24,7 @@ def dep_adolescent(request):
     return render(request, 'Depression/dep_adolescent.html')
 def dep_rearer(request):
     return render(request, 'Depression/dep_rearer.html')
+
 
 # 21.10.12 다중지능 (청소년, 양육자) 서비스 추가
 def multiiq_test(request):

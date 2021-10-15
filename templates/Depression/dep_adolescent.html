@@ -1,10 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>청소년 우울증 자가진단</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
 
-</body>
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+<div class="container">
+	<div class="header clearfix">
+		<nav>
+		<ul class="nav nav-pills pull-right"></ul>
+		</nav>
+	</div>
+<script>
+		$(document).ready(function(){
+		  $('#test_form').submit(function(){
+			var input_names = []
+			var correctly_checked = true;
+			$('#test_form input:radio').each(function(){
+			  var input_name = $(this).prop('name');
+			  if(input_names.indexOf(input_name) < 0){
+				if(!$("input:radio[name="+input_name+"]").is(":checked")){
+				  correctly_checked = false;
+				  alert((parseInt(input_name.substr("question".length))+1)+"번 문항이 체크되지 않았습니다.");
+				  return false;
+				}
+				input_names.push(input_name);
+			  }
+			});
+			if(correctly_checked == false){
+			  return false;
+			}
+		  });
+		});
+		</script>
+	<div id="test_context">
+	<div class="container">
+	<span style="font-weight:bold;">우울증 자가진단 - 청소년</span>
+	<p>&lt;우울증 자가진단 테스트>는 총 21문항 입니다. 지난 두 주를 기준으로 해당되는 문항을 체크하시면 됩니다.</p><br><br><br> </div>
+	<div class="form-group">
+
+        슈ㅠㅠㅠㅠㅠㅠㅠ정ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ해ㅐㅐㅐㅐㅐㅐㅐㅐㅐ
+
+        <label>1.</label>
+        <div class="radio"><label><input type="radio" name="question0" value="0">나는 슬프지 않다.</label></div>
+        <div class="radio"><label><input type="radio" name="question0" value="1">나는 슬프다.</label></div>
+        <div class="radio"><label><input type="radio" name="question0" value="2">나는 항상 슬프고 기운을 낼 수 없다.</label></div>
+        <div class="radio"><label><input type="radio" name="question0" value="3">나는 너무나 슬프고 불행해서 도저히 견딜 수 없다.</label></div>
+
+        <label>2.</label>
+        <div class="radio"><label><input type="radio" name="question1" value="0">나는 앞날에 대해서 특별히 낙담하지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question1" value="1">나는 앞날에 대해서 용기가 나지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question1" value="2">나는 앞날에 대해 기대할 것이 아무것도 없다고 느낀다.</label></div>
+        <div class="radio"><label><input type="radio" name="question1" value="3">나의 앞날은 아주 절망적이고 나아질 가망이 없다고 느낀다.</label></div>
+
+        <label>3.</label>
+        <div class="radio"><label><input type="radio" name="question2" value="0">나는 실패자라고 느끼지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question2" value="1">나는 보통 사람들보다 더 많이 실패한 것 같다.</label></div>
+        <div class="radio"><label><input type="radio" name="question2" value="2">나의 살아온 과거를 되돌아보면 실패투성이인 것 같다.</label></div>
+        <div class="radio"><label><input type="radio" name="question2" value="3">나는 한 인간으로서 완전한 실패자라고 느낀다.</label></div>
+
+        <label>4.</label>
+        <div class="radio"><label><input type="radio" name="question3" value="0">나는 전과 다름없이 일상생활속에서 만족을 느끼고 있다.</label></div>
+        <div class="radio"><label><input type="radio" name="question3" value="1">나는 전과 같이 일상생활이 즐겁지 않다.</label></div>
+        <div class="radio"><label><input type="radio" name="question3" value="2">나는 요즘에는 어떤 것에서도 별로 만족을 얻지 못한다.</label></div>
+        <div class="radio"><label><input type="radio" name="question3" value="3">나는 모든것이 다 불만스럽고 싫증난다.</label></div>
+
+        <label>5.</label>
+        <div class="radio"><label><input type="radio" name="question4" value="0">나는 특별히 죄책감을 느끼지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question4" value="1">나는 종종 죄책감을 느낀다.</label></div>
+        <div class="radio"><label><input type="radio" name="question4" value="2">나는 죄책감을 느낄 때가 아주 많다.</label></div>
+        <div class="radio"><label><input type="radio" name="question4" value="3">나는 항상 죄책감에 시달리고 있다.</label></div>
+
+        <label>6.</label>
+        <div class="radio"><label><input type="radio" name="question5" value="0">나는 벌을 받고 있다고 느끼지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question5" value="1">나는 어쩌면 벌을 받을지도 모른다고 느낀다.</label></div>
+        <div class="radio"><label><input type="radio" name="question5" value="2">나는 앞으로 벌을 받을 거라고 생각한다.</label></div>
+        <div class="radio"><label><input type="radio" name="question5" value="3">나는 지금 벌을 받고 있다고 느낀다.</label></div>
+
+        <label>7.</label>
+        <div class="radio"><label><input type="radio" name="question6" value="0">나는 내 자신에 대해 실망하지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question6" value="1">나는 내 자신에 대해 실망하고 있다.</label></div>
+        <div class="radio"><label><input type="radio" name="question6" value="2">나는 내 자신에게 화가난다.</label></div>
+        <div class="radio"><label><input type="radio" name="question6" value="3">나는 내 자신을 증오하고 있다.</label></div>
+
+        <label>8.</label>
+        <div class="radio"><label><input type="radio" name="question7" value="0">나는 내가 다른 사람보다 못하다고 느끼지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question7" value="1">나는 나의 약점이나 실수에 대하여 내자신을 탓하는 편이다.</label></div>
+        <div class="radio"><label><input type="radio" name="question7" value="2">내가 한 일이 잘못되었을 때는 언제나 나를 탓한다.</label></div>
+        <div class="radio"><label><input type="radio" name="question7" value="3">일어나는 모든 나쁜 일들은 다 내 탓이다.</label></div>
+
+        <label>9.</label>
+        <div class="radio"><label><input type="radio" name="question8" value="0">나는 자살할 생각같은 것은 하지 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question8" value="1">나는 자살할 생각을 가끔 하지만, 실제로 하지는 않을 것이다.</label></div>
+        <div class="radio"><label><input type="radio" name="question8" value="2">나는 자살하고 싶은 생각이 자주 든다.</label></div>
+        <div class="radio"><label><input type="radio" name="question8" value="3">나는 기회만 있으면 자살하겠다.</label></div>
+
+        <label>10.</label>
+        <div class="radio"><label><input type="radio" name="question9" value="0">나는 평소보다 더 울지는 않는다.</label></div>
+        <div class="radio"><label><input type="radio" name="question9" value="1">나는 전보다 더 많이 운다.</label></div>
+        <div class="radio"><label><input type="radio" name="question9" value="2">나는 요즘 항상 운다.</label></div>
+        <div class="radio"><label><input type="radio" name="question9" value="3">전에는 울고 싶을 때 울 수 있었지만, 요즘은 울래야 울 기력조차 없다.</label></div>
+
+        <label>11.</label>
+        <div class="radio"><label><input type="radio" name="question10" value="0">나는 요즘 평소보다 더 찌증을 내는 편은 아니다.</label></div>
+        <div class="radio"><label><input type="radio" name="question10" value="1">나는 전보다 더 쉽게 짜증이 나고 귀찮아진다.</label></div>
+        <div class="radio"><label><input type="radio" name="question10" value="2">나는 요즘 항상 짜증을 내고 있다.</label></div>
+        <div class="radio"><label><input type="radio" name="question10" value="3">전에는 짜증스럽던 일에 요즘은 너무 지쳐서 짜증조차 나지 않는다.</label></div>
+
+        <label>12.</label>
+        <div class="radio"><label><input type="radio" name="question11" value="0">나는 다른 사람에 대한 관심을 잃지 않고 있다.</label></div>
+        <div class="radio"><label><input type="radio" name="question11" value="1">나는 전보다 다른사람에 대한 관심이 줄었다.</label></div>
+        <div class="radio"><label><input type="radio" name="question11" value="2">나는 다른사람에 대해 거의 관심이 없어졌다.</label></div>
+        <div class="radio"><label><input type="radio" name="question11" value="3">나는 다른사람에 대해 완전히 관심이 없어졌다.</label></div>
+
+
+
+
+		<br><br><br><br>
+		<textarea cols="60" rows="10"  placeholder="전문가한테 남기고 싶은 의견을 작성하세요."></textarea>
+
+</label>
+
+
+	</div>
+		<a href="{% url 'service:dep_rearer' %}"  class="btn btn-primary btn-sm" type="submit">양육자용 우울증 검사 바로가기</a>
+
+	</form>
+
+	</div>
+		<footer class="footer">
+			<br>
+			<p>&copy; 탐나는 친구들</p>
+		</footer>
+	</div>
+
+	</body>
 </html>
+{% endblock %}
