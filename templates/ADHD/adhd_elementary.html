@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% csrf_token %}
 	<!--	<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 		<link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
 -->
@@ -52,7 +53,8 @@
 	<span style="font-weight:bold;">ADHD 테스트 - 초등</span>
 	<p>&lt;초등학생용 ADHD 검사&gt;입니다. 지난 일주일 동안 내가 한 행동을 가장 잘 기술한 곳에 표시 하세요. 총 검사시간은 5분정도 소요됩니다.</p>
 		<div>1점: 전혀 그렇지 않다 <   2점: 가끔 그렇다 <   3점: 보통이다 <   4점: 자주 그렇다 <   5점: 항상 그렇다 <br><br><br> </div>
-	<form action="/service/adhd_rearer/" method="post" id="test_form">
+	<form action="{% url 'service:adhd_rearer' %}" method="post" id="test_form">
+		{% csrf_token %}
 		<div class="form-group">
 
 		<label>1. 학교에서 수업이나 다른 활동을 할 때, 부주의해서 실수를 많이 한다.</label><br>
@@ -163,9 +165,12 @@
 		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="2">3점</label></div>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="3">4점</label></div> <br><br>
 
+			<textarea cols="60" rows="10"  placeholder="전문가한테 남기고 싶은 의견을 작성하세요."></textarea>
+<input class="btn btn-primary btn-sm" type="submit" value="저장하기"> <br><br>
+
 		<br><br><br><br>
-		<textarea cols="60" rows="10"  placeholder="전문가한테 남기고 싶은 의견을 작성하세요."></textarea>
-		<input class="btn btn-primary btn-sm" type="submit" value="성인용 adhd 검사 바로가기">
+			<a href="{% url 'service:adhd_rearer' %}"  class="btn btn-primary btn-sm" type="submit">성인용 adhd 검사 바로가기</a>
+
 
 	</label>
 

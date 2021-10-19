@@ -1,13 +1,25 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+
+from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+
+
+from django.http import HttpResponseRedirect, HttpResponse
 
 #******************** 21.07.26 서비스 소개
 # 21.10.05 adhd 서비스 추가
 def adhd_test(request):
     return render(request, 'ADHD/adhd_test.html')
 # 21.10.05 adhd 초/중고/양육자 추가
+# form 처리 21.10.118
 def adhd_elementary(request):
-    return render(request, 'ADHD/adhd_elementary.html')
+
+    return render(request, 'ADHD/adhd_student.html', context)
+
+
+#    return render(request, 'ADHD/adhd_student.html')
+
 def adhd_student(request):
     return render(request, 'ADHD/adhd_student.html')
 def adhd_rearer(request):
