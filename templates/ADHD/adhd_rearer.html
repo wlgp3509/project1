@@ -49,7 +49,13 @@
 	<span style="font-weight:bold;">ADHD 테스트 - 양육자</span>
 	<p>&lt;양육자용 ADHD 검사&gt;입니다. 지난 일주일 동안 내가 한 행동을 가장 잘 기술한 곳에 표시 하세요. 총 검사시간은 5분정도 소요됩니다.</p>
 		<div>1점: 전혀 그렇지 않다 <   2점: 가끔 그렇다 <   3점: 보통이다 <   4점: 자주 그렇다 <   5점: 항상 그렇다 <br><br><br> </div>
-	<div class="form-group">
+	<div>이곳은 결과!
+
+	</div>
+		{% csrf_token %}
+
+
+		<div class="form-group">
 
 		<label>1. 일을 순서대로 진행하기 어렵다.</label><br>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="0">1점 </label></div>
@@ -201,4 +207,6 @@
 
 	</body>
 </html>
+
+{% endblock content %}
 {% endblock %}

@@ -1,8 +1,9 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from service.forms import AdhdForm
 
-from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from service.models import Choice
 
 
 from django.http import HttpResponseRedirect, HttpResponse
@@ -12,13 +13,27 @@ from django.http import HttpResponseRedirect, HttpResponse
 def adhd_test(request):
     return render(request, 'ADHD/adhd_test.html')
 # 21.10.05 adhd 초/중고/양육자 추가
-# form 처리 21.10.118
+# form 처리 21.10.21
 def adhd_elementary(request):
+    if request.method == "POST":
+        form = AdhdForm(request.POST)
+        if form.is_valid():
+            # 데이터를 모델에 저장하기 전에 작성자 정보를 추가하고 저장해야 하므로 commit=False 사용
+            # post = form.save(commit=False)
 
-    return render(request, 'ADHD/adhd_student.html', context)
+            form.save()
+            # 새로운 url로 리다이렉션 시킴
+            #            return HttpResponseRedirect('/thanks')
+
+            return redirect('service:adhd_elementary.html')
+
+    else:
+        form = AdhdForm()
+
+    return render(request, 'ADHD/adhd_elementary.html', {'form': form})
 
 
-#    return render(request, 'ADHD/adhd_student.html')
+    return render(request, 'ADHD/adhd_student.html')
 
 def adhd_student(request):
     return render(request, 'ADHD/adhd_student.html')
