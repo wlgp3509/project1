@@ -1,85 +1,210 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>다중지능검사_청소년</title>
+{% csrf_token %}
+	<!--	<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
+		<link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
+-->
+<!-- 21.10.22 최졔 -->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>다중지능검사 - 청소년 </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 
-    <meta data-n-head="ssr" charset="utf-8">
-    <meta data-n-head="ssr" name="viewport" content="width=device-width, initial-scale=1">
-    <meta data-n-head="ssr" name="naver-site-verification" content="15114398177f69e9c9b49f6cd1551fc762837977">
-    <meta data-n-head="ssr" data-hid="description" name="description" content="다중지능검사, 다중지능테스트, 직업적성테스트, 진로적성검사, 직업적성검사, MBTI, 지문적성검사 시작">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <meta data-n-head="ssr" property="og:url" content="https://multiiqtest.com/start">
-    <meta data-n-head="ssr" property="og:type" content="website">
-    <meta data-n-head="ssr" property="og:title" content="다중지능검사 시작">
-    <meta data-n-head="ssr" property="og:description" content="다중지능검사, 다중지능테스트, 직업적성테스트, 진로적성검사, 직업적성검사, MBTI, 지문적성검사 시작">
-    <link data-n-head="ssr" rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link data-n-head="ssr" rel="stylesheet" type="text/css" href="/style/main.css">
-    <link data-n-head="ssr" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet">
-    <link data-n-head="ssr" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link data-n-head="ssr" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
-    <link data-n-head="ssr" rel="canonical" href="https://multiiqtest.com/start">
-    <script data-n-head="ssr" src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
-
-    <link rel="preload" href="/_nuxt/62cf8cf468bd1a67b186.js" as="script">
-    <link rel="preload" href="/_nuxt/34940750ad4ec7f94b1f.js" as="script">
-    <link rel="preload" href="/_nuxt/9bdc9d8a622d8b335f4e.js" as="script">
-    <link rel="preload" href="/_nuxt/768b47f2ed24d05325cb.js" as="script">
-    <link rel="preload" href="/_nuxt/410832fc89d9710175d9.js" as="script">
-    <style data-vue-ssr-id="3191d5ad:0 932a8f60:0">
-    .nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#fff;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}
-*{font-family:Noto Sans KR,sans-serif}</style>
+	</head>
 
 
+	<body>
+	<div class="container">
+	<div class="header clearfix">
+		<nav>
+		<ul class="nav nav-pills pull-right"></ul>
+		</nav>
+	</div>
+	<script>
+		$(document).ready(function(){
+		  $('#test_form').submit(function(){
+			var input_names = []
+			var correctly_checked = true;
+			$('#test_form input:radio').each(function(){
+			  var input_name = $(this).prop('name');
+			  if(input_names.indexOf(input_name) < 0){
+				if(!$("input:radio[name="+input_name+"]").is(":checked")){
+				  correctly_checked = false;
+				  alert((parseInt(input_name.substr("question".length))+1)+"번 문항이 체크되지 않았습니다.");
+				  return false;
+				}
+				input_names.push(input_name);
+			  }
+			});
+			if(correctly_checked == false){
+			  return false;
+			}
+		  });
+		});
+		</script>
+	<div id="test_context">
+	<div class="container">
+	<span style="font-weight:bold;">다중지능 검사 - 청소년</span>
+	<p>유의사항 : 본 테스트 문답은 미국의 심리학자인 하워드 가드너가 제시한 다중지능이론을 기반으로 하여 작성되었습니다. 다중지능을 측정하기위한 본 검사는 총 56문항이 나옵니다. 각 문항마다 평소에 편하고 습관적으로 하는 것을 체크하시면 됩니다.
+</p>
+		<div>1점: 전혀 그렇지 않다 <   2점: 별로 그렇지 않다 <   3점: 보통이다 <   4점: 대체로 그렇다 <   5점: 매우 그렇다 <br><br><br> </div>
+	<form action="{% url 'service:mul_rearer' %}" method="post" id="test_form">
+		{% csrf_token %}
+		<div class="form-group">
 
-</head>
-<body>
-<div data-server-rendered="true" id="__nuxt">
-    <div id="__layout"><div id="app" class="container">
-        <header>
+		<label>1. 취미 생활로 악기 연주나 음악감상을 즐긴다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="0">1점 </label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="3">4점</label></div>
+			<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="4">5점</label></div>
+			<br><br>
 
-            <div><nav class="navbar navbar-light navbar-expand-lg">
-                <h2> 다중지능 검사 - 청소년</h2>
-                <p>유의사항 <br>
-                    본 테스트 문답은 미국의 심리학자인 하워드 가드너가 제시한 다중지능이론을 기반으로 하여 작성되었습니다.
-                    다중지능을 측정하기위한 본 검사는 총 56문항이 나옵니다. 각 문항마다 평소에 편하고 습관적으로 하는 것을 체크하시면 됩니다.
-                </p>
-                <ul class="navbar-nav ml-auto"><li class="nav-item">
+		<label>2. 운동 경기를 보면 운동선수들의 장단점을 잘 집어낸다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="3">4점</label></div> <br><br>
 
-                    <a target="_self" href="#" class="nav-link">
-                    <button type="button" class="btn btn btn-sm btn-primary">다른 테스트</button></a></li>
-                </ul></nav></div>
-        </header>
+		<label>3. 어떤 일이든 실험하고 검증하는 것을 좋아한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question2" value="3">4점</label></div> <br><br>
 
-        <div class="mt-3 container">
-            <main>
-                <div class="animated fadeIn fast"><div class="text-right p-2">1 / 5</div>
-                    <div class="progress">
-                        <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="21" class="progress-bar" style="width:21%;"></div>
+		<label>4. 손으로 물건을 만들고, 그림을 그리는 것을 좋아한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question3" value="3">4점</label></div> <br><br>
 
-                    </div>
-                    <form><section id="q0" name="q0">
-                        <fieldset class="form-group">
-                            <legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">1. 취미 생활로 악기 연주나 음악감상을 즐긴다.</legend>
-                            <div tabindex="-1" role="group" class="bv-no-focus-ring">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" autocomplete="off" value="5" class="custom-control-input">
-                                    <label class="custom-control-label">매우 그렇다</label></div>
+		<label>5. 다른 사람보다 어휘력이 풍부한 편이다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question4" value="3">4점</label></div> <br><br>
 
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" autocomplete="off" value="4" class="custom-control-input">
-                                    <label class="custom-control-label">대체로 그렇다</label></div>
+		<label>6. 친구나 가족들의 고민거리를 들어 주거나 해결하는 것을 좋아한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question5" value="3">4점</label></div> <br><br>
 
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" autocomplete="off" value="3" class="custom-control-input">
-                                    <label class="custom-control-label">보통이다</label></div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" autocomplete="off" value="2" class="custom-control-input">
-                                    <label class="custom-control-label">별로 그렇지 않다</label></div>
-                                <div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q1" name="q1"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">2. 운동 경기를 보면 운동선수들의 장단점을 잘 집어낸다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q2" name="q2"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">3. 어떤 일이든 실험하고 검증하는 것을 좋아한다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q3" name="q3"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">4. 손으로 물건을 만들고, 그림을 그리는 것을 좋아한다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q4" name="q4"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">5. 다른 사람보다 어휘력이 풍부한 편이다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q5" name="q5"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">6. 친구나 가족들의 고민거리를 들어 주거나 해결하는 것을 좋아한다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> <div class="adsense mt-2 mb-2"><Adsense data-ad-client="ca-pub-1804718278215440" data-ad-slot="2661019782"></Adsense></div></div></fieldset></section><section id="q6" name="q6"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">7. 나 자신을 되돌아보고, 앞으로의 생활을 계획하는 것을 좋아한다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q7" name="q7"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">8. 자동차에 관심이 많고, 각각의 공통점과 차이점을 알고 있다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q8" name="q8"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">9. 악보를 보면 그 곡의 멜로디를 어느 정도 알 수 있다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q9" name="q9"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">10. 평소에 몸을 움직이며 활동하는 것을 좋아한다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q10" name="q10"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">11. 학교 다닐 때 수학이나 과학과목을 좋아했다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q11" name="q11"><fieldset class="form-group"><legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0">12. 어림짐작으로도 길이나 넓이를 비교적 잘 알아맞힌다.</legend><div tabindex="-1" role="group" class="bv-no-focus-ring"><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="5" class="custom-control-input"><label class="custom-control-label">매우 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="4" class="custom-control-input"><label class="custom-control-label">대체로 그렇다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="3" class="custom-control-input"><label class="custom-control-label">보통이다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="2" class="custom-control-input"><label class="custom-control-label">별로 그렇지 않다</label></div><div class="custom-control custom-radio"><input type="radio" autocomplete="off" value="1" class="custom-control-input"><label class="custom-control-label">전혀 그렇지 않다</label></div> </div></fieldset></section><section id="q12" name="q12"></section><section id="q13" name="q13"></section><section id="q14" name="q14"></section><section id="q15" name="q15"></section><section id="q16" name="q16"></section><section id="q17" name="q17"></section><section id="q18" name="q18"></section><section id="q19" name="q19"></section><section id="q20" name="q20"></section><section id="q21" name="q21"></section><section id="q22" name="q22"></section><section id="q23" name="q23"></section><section id="q24" name="q24"></section><section id="q25" name="q25"></section><section id="q26" name="q26"></section><section id="q27" name="q27"></section><section id="q28" name="q28"></section><section id="q29" name="q29"></section><section id="q30" name="q30"></section><section id="q31" name="q31"></section><section id="q32" name="q32"></section><section id="q33" name="q33"></section><section id="q34" name="q34"></section><section id="q35" name="q35"></section><section id="q36" name="q36"></section><section id="q37" name="q37"></section><section id="q38" name="q38"></section><section id="q39" name="q39"></section><section id="q40" name="q40"></section><section id="q41" name="q41"></section><section id="q42" name="q42"></section><section id="q43" name="q43"></section><section id="q44" name="q44"></section><section id="q45" name="q45"></section><section id="q46" name="q46"></section><section id="q47" name="q47"></section><section id="q48" name="q48"></section><section id="q49" name="q49"></section><section id="q50" name="q50"></section><section id="q51" name="q51"></section><section id="q52" name="q52"></section><section id="q53" name="q53"></section><section id="q54" name="q54"></section><section id="q55" name="q55"></section> <button type="button" class="btn btn-primary">다음 페이지로</button> </form></div></main> <footer><div><div class="adsense mt-2 mb-2"><Adsense data-ad-client="ca-pub-1804718278215440" data-ad-slot="2661019782"></Adsense></div> <div class="text-right mb-3">© 탐나는 친구들 </div></div></footer></div></div></div></div><script>window.__NUXT__=(function(a){return {layout:"default",data:[{}],error:null,state:{locales:[a],locale:a},serverRendered:true}}("ko"));</script><script src="/_nuxt/62cf8cf468bd1a67b186.js" defer></script><script src="/_nuxt/410832fc89d9710175d9.js" defer></script><script src="/_nuxt/34940750ad4ec7f94b1f.js" defer></script><script src="/_nuxt/9bdc9d8a622d8b335f4e.js" defer></script><script src="/_nuxt/768b47f2ed24d05325cb.js" defer></script>
-</body>
+		<label>7. 나 자신을 되돌아보고, 앞으로의 생활을 계획하는 것을 좋아한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question6" value="3">4점</label></div> <br><br>
+
+		<label>8. 자동차에 관심이 많고, 각각의 공통점과 차이점을 알고 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question7" value="3">4점</label></div> <br><br>
+
+		<label>9. 악보를 보면 그 곡의 멜로디를 어느 정도 알 수 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question8" value="3">4점</label></div> <br><br>
+
+		<label>10. 평소에 몸을 움직이며 활동하는 것을 좋아한다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question9" value="3">4점</label></div> <br><br>
+
+		<label>11. 학교 다닐 때 수학이나 과학과목을 좋아했다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question10" value="3">4점</label></div> <br><br>
+
+		<label>12. 어림짐작으로도 길이나 넓이를 비교적 잘 알아맞힌다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question11" value="3">4점</label></div> <br><br>
+
+		<label>13. 글이나 문서를 읽을 때 문법적으로 어색한 문장을 잘 찾아낸다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question12" value="3">4점</label></div> <br><br>
+
+		<label>14. 직장 내 성희롱이 왜 발생하고 어떻게 해결하면 좋을지 알고 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question13" value="3">4점</label></div> <br><br>
+
+		<label>15. 나의 건강 상태나 기분, 컨디션을 정확히 파악할 수 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question14" value="3">4점</label></div> <br><br>
+
+		<label>16. 옷이나 가방을 보면 어떤 브랜드인지 바로 알아맞힐 수 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question15" value="3">4점</label></div> <br><br>
+
+		<label>17. 다른 사람의 연주나 노래를 들으면 어떤 점이 부족한지 알 수 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question16" value="3">4점</label></div> <br><br>
+
+		<label>18. 어떤 운동이라도 한두번 해보면 잘 할 수 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="3">4점</label></div> <br><br>
+
+			<label>19. 다른 사람의 말 속에서 비논리적인 점을 잘 찾아낸다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="3">4점</label></div> <br><br>
+
+			<label>20. 다른 사람의 그림을 보고 평가를 잘 할 수 있다.</label><br>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="0">1점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="1">2점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="2">3점</label></div>
+		<div class="radio" style="display:inline"><label><input type="radio" name="question17" value="3">4점</label></div> <br><br>
+
+			<textarea cols="60" rows="10"  placeholder="전문가한테 남기고 싶은 의견을 작성하세요."></textarea>
+<input class="btn btn-primary btn-sm" type="submit" value="저장하기"> <br><br>
+
+<input class="btn btn-primary btn-sm" type="submit" value="다음페이지로 이동"> <br><br>
+
+
+		<br><br><br><br>
+			<a href="{% url 'service:mul_rearer' %}"  class="btn btn-primary btn-sm" type="submit">양육자 다중지능 검사 바로가기</a>
+
+
+	</label>
+
+
+	</div>
+
+
+	</form>
+
+	</div>
+		<footer class="footer">
+			<br>
+			<p>&copy; 탐나는 친구들</p>
+		</footer>
+	</div>
+
+	</body>
 </html>
 {% endblock %}

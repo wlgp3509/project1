@@ -51,7 +51,7 @@
 		<div>1점: 전혀 그렇지 않다 <   2점: 가끔 그렇다 <   3점: 보통이다 <   4점: 자주 그렇다 <   5점: 항상 그렇다 <br><br><br> </div>
 	<form action="/service/adhd_rearer/" method="post" id="test_form">
 		<div class="form-group">
-
+		{% csrf_token %}
 		<label>1. 학교에서 수업이나 혹은 다른 활동을 할 때, 주의 집중을 하지 않고 부주의해서 실수를 많이 한다.</label><br>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="0">1점 </label></div>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="1">2점</label></div>
