@@ -1,5 +1,6 @@
 from django.db import models
 
+
 from django.forms.widgets import RadioSelect
 
 
@@ -7,5 +8,9 @@ from django.forms.widgets import RadioSelect
 # 120p 참조
 
 class Choice(models.Model):
-    ADHD_CHOICES = [('0', '0'), ('1', '1'), ('2', '2'), ('3', '3')]
 
+    ADHD_CHOICES = [('0', '0'), ('1', '1'), ('2', '2'), ('3', '3')]
+    contents = models.TextField()
+
+    def __str__(self):
+        return self.contents

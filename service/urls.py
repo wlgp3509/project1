@@ -13,7 +13,7 @@ urlpatterns = [
     path('adhd_elementary/', views.adhd_elementary, name='adhd_elementary'),
     path('adhd_student/', views.adhd_student, name='adhd_student'),
     path('adhd_rearer/', views.adhd_rearer, name='adhd_rearer'),
-    path('TEST/', views.TEST, name='TEST'),
+    path('adhd_result/', views.result, name='adhd_result'),
 
     # 우울증 청소년/양육자 추가_최졔 21.10.12
     path('dep_adolescent/', views.dep_adolescent, name='dep_adolescent'),
