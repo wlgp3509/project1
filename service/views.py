@@ -17,14 +17,15 @@ def adhd_test(request):
 def adhd_elementary(request):
     choices = Choice.objects.all()
     if request.method == "POST":
-        content = request.POST['content']
+        content = request.POST.get('content')
         form = AdhdForm(request.POST)
         if form.is_valid():
             # 데이터를 모델에 저장하기 전에 작성자 정보를 추가하고 저장해야 하므로 commit=False 사용
             form.save()
             # 새로운 url로 리다이렉션 시킴
             # return HttpResponseRedirect(reverse('ADHD/adhd_result'))
-            return render(request, 'ADHD/adhd_result.html')
+            # return HttpResponseRedirect('/ADHD/adhd_result/')
+            return redirect('service:adhd_result')
     else:
         form = AdhdForm()
     context = {'form': form}
@@ -34,8 +35,10 @@ def adhd_elementary(request):
 
 #21.10.22 선택 결과창
 def result(request):  #요청, id값 파라미터
+    adhd_form = request.GET.get('adhd_form')
 
-    return render(request, 'ADHD/adhd_result.html')
+    context = {'adhd_form' : adhd_form, }
+    return render(request, 'ADHD/adhd_result.html', context)
 
 
 

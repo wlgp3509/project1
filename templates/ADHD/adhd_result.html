@@ -1,14 +1,22 @@
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ADHD 결과창</title>
-</head>
-<body>
-{{ choices.contents }}
+{% load static %}
 
-</body>
-</html>
 
-{% endblock content %}
+<link rel="stylesheet" href="{% static 'ADHD/css/adhd_elementary.css'%}">
+<div class="container">
+{% csrf_token %}
+전문가한테 남기는 코멘트 : {{ adhd.contents }} <br>
+1: {{choices}} <br>
+2: {{adhd.adhd_form}} <br>
+3 : {{ adhd.radio }} <br>
+4: {{value}}  <br>
+5: {{ form.as_p }}<br>
+6 : {{ form.contents}}<br>
+7 : <br>
+8 : <br>
+9 : <br>
+
+</div>
+
+
+{% endblock %}

@@ -8,9 +8,9 @@ from django.forms.widgets import RadioSelect
 # 120p 참조
 
 class Choice(models.Model):
-
     ADHD_CHOICES = [('0', '0'), ('1', '1'), ('2', '2'), ('3', '3')]
+    choices = models.CharField(max_length=10, choices=ADHD_CHOICES)
+
     contents = models.TextField()
 
-    def __str__(self):
-        return self.contents
+
