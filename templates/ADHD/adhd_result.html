@@ -1,20 +1,33 @@
 {% block content %}
 {% load static %}
 
-
 <link rel="stylesheet" href="{% static 'ADHD/css/adhd_elementary.css'%}">
 <div class="container">
+
 {% csrf_token %}
-전문가한테 남기는 코멘트 : {{ adhd.contents }} <br>
-1: {{choices}} <br>
-2: {{adhd.adhd_form}} <br>
-3 : {{ adhd.radio }} <br>
-4: {{value}}  <br>
-5: {{ form.as_p }}<br>
-6 : {{ form.contents}}<br>
-7 : <br>
-8 : <br>
-9 : <br>
+
+          전문가한테 남기는 코멘트 : {{ adhd.contents }} <br>
+        1 : {{ form.choice }} <br>
+        2 : {{ adhd.adhd_form }} <br>
+        3 : {{ adhd.radio }} <br>
+        4 : {{ value }}  <br>
+        5 : {{ form.adhd_form }}<br>
+        6 : {{ choices.contents }}<br>
+        7 : {{ form.choices }}<br>
+        8 : {{ adhd_form }} <br>
+        9 : {{ adhd_form.choice }}<br>
+        10 : {{ adhd_form.choices }}<br>
+        11 : {{ adhd_result }}<br>
+        12 : {{ choices.choice }}<br>
+        13 : {{ choices.contents }} <br>
+    <br><br><br><br><br><br>
+
+  ?:  {{ adhd_form.contents }}
+
+
+
+
+    <br>
 
 </div>
 
