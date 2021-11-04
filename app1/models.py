@@ -9,9 +9,11 @@ from django.contrib.auth.models import User         #auth컬럼에 user id를 �
 # 질문 작성일자 :create_date
 # 답변 테이블 : Answer
 
-#----------------질문 테이블
+#----------------질문(진단) 테이블
 class Question(models.Model):
-    subject = models.CharField(max_length=100)
+
+    ADHD_CHOICES = (('0', '0'), ('1', '1'), ('2', '2'), ('3', '3'))
+    choices = models.CharField(max_length=10, choices=ADHD_CHOICES, null=True)
     content = models.TextField()
     create_date = models.DateTimeField()
 
@@ -28,9 +30,6 @@ class Question(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
 
 
-    def __str__(self):      # subject값을 id값이 아닌 문자열 값 그대로 보여주기위함
-        return self.subject
-
 
 
 #----------------답변 테이블
@@ -44,3 +43,5 @@ class Answer(models.Model):
     # null=True 컬럼에 null값 허용
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     modify_date = models.DateTimeField(null=True, blank=True)
+
+

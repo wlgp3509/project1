@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-	<!--	<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
+<!--	<link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
 		<link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}">
 -->
 <!DOCTYPE HTML>
@@ -49,11 +49,10 @@
 	<span style="font-weight:bold;">ADHD 테스트 - 양육자</span>
 	<p>&lt;양육자용 ADHD 검사&gt;입니다. 지난 일주일 동안 내가 한 행동을 가장 잘 기술한 곳에 표시 하세요. 총 검사시간은 5분정도 소요됩니다.</p>
 		<div>1점: 전혀 그렇지 않다 <   2점: 가끔 그렇다 <   3점: 보통이다 <   4점: 자주 그렇다 <   5점: 항상 그렇다 <br><br><br> </div>
-	<div>이곳은 결과!
 
-	</div>
+		<form action="{% url 'app1:adhd_result' %}" method="post" id="adhd_form" name="adhd_form">
+
 		{% csrf_token %}
-
 
 		<div class="form-group">
 
@@ -62,7 +61,7 @@
 		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="1">2점</label></div>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="2">3점</label></div>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question0" value="3">4점</label></div> <br><br>
-
+<!--
 		<label>2. 새로운 일을 시작하고 준비하기까지 많은 시간이 걸린다.</label><br>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="0">1점</label></div>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question1" value="1">2점</label></div>
@@ -189,7 +188,7 @@
 		<div class="radio" style="display:inline"><label><input type="radio" name="question21" value="2">3점</label></div>
 		<div class="radio" style="display:inline"><label><input type="radio" name="question21" value="3">4점</label></div> <br><br>
 
-
+-->
 
 		<br><br><br><br>
 		<textarea cols="60" rows="10"  placeholder="전문가한테 남기고 싶은 의견을 작성하세요."></textarea>

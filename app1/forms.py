@@ -8,7 +8,7 @@ from app1.models import Question, Answer
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['subject', 'content']
+        fields = ['choices', 'content']
 # ----- 21.07.14(최졔) <질문 등록하기> 제목,내용에 bootstrap 적용
 # html에 적용하지 않고 모듈에서 적용하는 이유?
 # {{form.as_p}} : 모델 (테이블)의 정보를 받아 form과 요소를 자동으로 생성하는 템플릿 태그 때문에
@@ -19,12 +19,12 @@ class QuestionForm(forms.ModelForm):
 # key값은 해당 컬럼명, value값은 적용할 속성으로 쓴다.
         widgets = {
             # key값 선언
-            'subject': forms.TextInput(attrs={'class': 'form-control'}),
+            'choices': forms.TextInput(),
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
         }
 
         labels = {
-            'subject': '제목',
+            'choices': '검사',
             'content': '내용',
         }
 
@@ -35,3 +35,5 @@ class AnswerForm(forms.ModelForm):
         labels = {
             'answer_content': '답변내용',
         }
+
+

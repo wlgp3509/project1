@@ -18,7 +18,7 @@
             <tr class="thead-dark">
                 <th class="text-center" >번호</th>
                 <th class="text-center" style="width:50%">제목</th>
-                <th class="text-center" >작성자</th>
+                <th class="text-center" >회원</th>
                 <th class="text-center" >작성일</th>
 
             </tr>
@@ -29,7 +29,7 @@
         <tr class="text-center">
             <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
             <td class="text-left">
-                <a href="{% url 'app1:detail' question.id %}">{{question.subject}}</a>
+                <a href="{% url 'app1:detail' question.id %}">{{question.author.username}}님의 검사입니다.</a>
                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger m-2">{{ question.answer_set.count }}</span>
                 {% endif %}

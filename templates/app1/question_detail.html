@@ -12,7 +12,7 @@
         {% endfor %}
     </div>
     {% endif %}
-    <h2 class="border-bottom py-2">제목 : {{question.subject}}</h2> <!-- 질문 상세보기 페이지 -->
+    <h2 class="border-bottom py-2">제목 : {{question.author.username}} 검사내용!</h2> <!-- 질문 상세보기 페이지 -->
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line">
@@ -24,6 +24,8 @@
                     {{question.create_date}}
                 </div>
             </div>
+            {{ Question.choices }}
+
             <!-- 21.07.21 수정, 삭제 버튼 등록
             data-uri : data 접두사라는것이 붙은 데이터 문자열
                       -> 이미지, 영상, 사운드 파일 등의 데이터 전송에도 사용가능
