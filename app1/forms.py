@@ -19,7 +19,7 @@ class QuestionForm(forms.ModelForm):
 # key값은 해당 컬럼명, value값은 적용할 속성으로 쓴다.
         widgets = {
             # key값 선언
-            'choices': forms.TextInput(),
+            'choices': forms.RadioSelect(attrs={'class': 'radio'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
         }
 
@@ -27,6 +27,9 @@ class QuestionForm(forms.ModelForm):
             'choices': '검사',
             'content': '내용',
         }
+
+
+
 
 class AnswerForm(forms.ModelForm):
     class Meta:

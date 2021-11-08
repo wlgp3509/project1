@@ -39,7 +39,6 @@ def question_list(request):
     # (GET은 전송방식중 1)
     page = request.GET.get('page', '1')
 
-
     question_list = Question.objects.order_by('-create_date')   #내림차순은 앞에 -을 붙여
     # context라는 변수에 딕셔너리 형태로 question_list key와 value를 저장
     # 템플릿단에서 해당 데이터를 쉽게 조회하기 위해
