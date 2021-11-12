@@ -16,7 +16,20 @@
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line">
-                {{question.content}}
+                의견 : {{question.content}} <br>
+                항목 test: {{ question.choices_form.as_ul }}
+
+                {% for choice in question.choices_set.all %}
+                <li>
+                    선택 항목1 : {{ form.choices }} ㅠㅠㅠ <br>
+                    2: {{ choice.choices|pluralize}}<br>
+                    3: {{ question.choices }}<br>
+
+                </li>
+                {% endfor %}
+
+
+                선택 항목2 : {{ question.choices }}
             </div>
             <div class="d-flex justify-content-end">
                 <div class="badge badge-light p-2">
@@ -24,7 +37,7 @@
                     {{question.create_date}}
                 </div>
             </div>
-            선택 항목 : {{ question.choices }}
+
 
             <!-- 21.07.21 수정, 삭제 버튼 등록
             data-uri : data 접두사라는것이 붙은 데이터 문자열

@@ -6,6 +6,6 @@ from django.db import models
 class Choice(models.Model):
     ADHD_CHOICES = (('0', '0'), ('1', '1'), ('2', '2'), ('3', '3'))
 
-    choices = models.CharField(max_length=10, choices=ADHD_CHOICES)
-    contents = models.TextField()
+    choices = models.CharField(max_length=10, choices=ADHD_CHOICES, null=True)
+    content = models.TextField()
 
